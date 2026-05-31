@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+  background: #050509;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The whole stage is a drag surface; keep selection/scroll from fighting it. */
+.zip-stage {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---- Music: equalizer bars ---- */
+@keyframes eqPulse {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.eq-bar {
+  transform-origin: bottom;
+  animation: eqPulse 0.9s ease-in-out infinite;
+}
+
+/* ---- Weather: drifting clouds + rotating sun ---- */
+@keyframes drift {
+  from {
+    transform: translateX(-8%);
+  }
+  to {
+    transform: translateX(8%);
+  }
+}
+.cloud-drift {
+  animation: drift 9s ease-in-out infinite alternate;
+}
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spinSlow 22s linear infinite;
+}
+
+/* subtle paper grain for the calendar scene */
+.paper-grain {
+  background-image: radial-gradient(rgba(120, 80, 40, 0.06) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
